@@ -1,11 +1,29 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      About
+      Coders
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-
+  <h1>Touch each card to see details </h1>
+  <ion-grid>
+    <ng-container *ngIf="coders; else empty">
+      <ion-row *ngFor="let coder of coders">
+        <ion-card (tap)='showDetails(coder)'>
+          <ion-item>
+            <ion-avatar item-start>
+              <img src="assets/dev/me.png">
+            </ion-avatar>
+            <h2>{{ coder.name }}</h2>
+            <p>{{ coder.phone_number }}</p>
+          </ion-item>
+        </ion-card>
+      </ion-row>
+    </ng-container>
+    <ng-template #empty>
+      <h3> No coders found </h3>
+    </ng-template>
+  </ion-grid>
 </ion-content>
