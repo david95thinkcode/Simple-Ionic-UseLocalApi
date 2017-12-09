@@ -24,12 +24,12 @@ export class CoderServiceProvider {
     return this.http
     .get(this.API_URL)
     .toPromise()
-    .then(res => res.json() as Coder[]) // res.json().data can be different after api implementation
+    .then(res => res.json() as Coder[])
     .catch(this.handleError);
   }
 
   private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error); // for demo purposes only
+    console.error('An error occurred', error);
     return Promise.reject(error.message || error);
   }
 
