@@ -4,10 +4,10 @@ import { CoderServiceProvider } from '../../providers/coder-service/coder-servic
 import { Coder } from '../../models/coder.model';
 
 @Component({
-  selector: 'page-about',
-  templateUrl: 'about.html'
+  selector: 'page-coders',
+  templateUrl: 'coders.html'
 })
-export class AboutPage implements OnInit {
+export class CodersPage implements OnInit {
   
   coders : Coder[];
 
