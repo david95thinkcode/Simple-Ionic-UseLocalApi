@@ -1,6 +1,7 @@
 # CREATE LOCAL API AND GET DATAS FROM IONIC APP - EXAMPLE
 
-## PART 2 : Get datas from Ionic App
+## PART 2 : Retrieve datas from Ionic App using HttpClient
+Here, we will fetch datas from the local API we've created at the [PART 1](https://github.com/david95thinkcode/Simple-LocalApi). So make sure, you've successfully implemented the API like part 1 shows.
 
 ## Prerequisites
 Make sure you've installed :
@@ -8,18 +9,16 @@ Make sure you've installed :
 - Cordova and Ionic command-line tools
 
 ## How to run it ?
-- Download this repo and extract files or just clone this repository
-- Install dependancies : open your terminal, move to the repo on your computer and run the command :
-```
-npm install
-```
-- Run the ionic app : When the terminal operations will end, run the command : 
-```
-ionic serve
-```
-- When app will run on your browser, go to tab Coders.
-If you see the following image, so it's fine !
-![Coders !](screenshots/coders.png "Current forecast")
+- Download this repository or just clone it
+- Extract files
+- Inside the repo folder, open your terminal and run **`npm install`** to install dependancies.
+- At the end of dependancies installation, run **`ionic serve`** to run your the app on the browser.
 
-## Remark
-I used Http module in the app but it's depreciated since the latest version of Angular.js (I'm talking abot version 5.0). If you can, I recommand you to use the HttpClient module if you're using the last version of Ionic wichs support Angular 5.
+## How to be sure everything is working well ?
+When everything is ok, your default web browser should automaticly open and show you the app.
+If you see the following image, so it's fine !
+
+![Coders !](screenshots/coders.png "Coders")
+
+If this page doesn't appear, make sure you've done everything on the [PART 1](https://github.com/david95thinkcode/Simple-LocalApi) and everything in the section **`How to run it`** of this repository.
+
