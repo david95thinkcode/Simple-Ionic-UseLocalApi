@@ -14,17 +14,14 @@ export class CodersPage implements OnInit {
   constructor(public alertCtrl : AlertController, public navCtrl: NavController, private codeProvider: CoderServiceProvider) {}
 
   ngOnInit() {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-    this.codeProvider.getCoderFromAPI()
-    .then(result => {
-      // remove the comment mark if you wan to see data in your browser console
-      // console.log(result);
-      this.coders = result;
+   this.getCoders();
+  }
+
+  getCoders() {
+    this.codeProvider.getCoders()
+    .subscribe(data => {
+      this.coders = data;
     })
-    .catch(e => {
-      this.PresentAlert('Server Error', 'We cannot get Events from API because we cannot access the server');
-    });
   }
 
   showDetails(coder: Coder) {

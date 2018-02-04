@@ -1,9 +1,9 @@
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import { tap, map }   from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { Coder } from '../../models/coder.model';
+import { Coder }      from '../../models/coder.model';
 
-import 'rxjs/add/operator/toPromise';
-import 'rxjs/add/operator/map';
 /*
   Generated class for the CoderServiceProvider provider.
 
@@ -15,17 +15,13 @@ export class CoderServiceProvider {
 
   private API_URL : string = 'http://localhost/local-api/coders.php';
   
-  constructor(public http: Http) {
-    console.log('Hello CoderServiceProvider Provider');
-  }
+  constructor(public http: HttpClient) {}
 
-  getCoderFromAPI() : Promise<Coder[]> {
-    
-    return this.http
-    .get(this.API_URL)
-    .toPromise()
-    .then(res => res.json() as Coder[])
-    .catch(this.handleError);
+  getCoders(): Observable<Coder[]> {
+    return this.http.get<Coder[]>(this.API_URL)
+    .pipe(
+      tap(result => console.table(result)),
+    );
   }
 
   private handleError(error: any): Promise<any> {
