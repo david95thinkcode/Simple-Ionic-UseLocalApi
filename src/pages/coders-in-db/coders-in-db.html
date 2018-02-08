@@ -14,16 +14,24 @@
 
 
 <ion-content padding>
+
+  <ion-fab right bottom>
+    <button ion-fab color="primary" (tap)="addCoder()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
   <ion-grid>
     <ng-container *ngIf="coders; else empty">
       <ion-row *ngFor="let coder of coders">
-        <ion-card (tap)='showDetails(coder)'>
+        <ion-card>
           <ion-item>
-            <ion-avatar item-start>
+            <ion-avatar (tap)='showDetails(coder)' item-start>
               <img src="assets/dev/me.png">
             </ion-avatar>
             <h2>{{ coder.name }}</h2>
-            <p>{{ coder.phone_number }}</p>
+            <p>{{ coder.country }}</p>
+            <ion-icon name="trash" color='danger' (tap)='removeCoder(coder)' item-end></ion-icon>
           </ion-item>
         </ion-card>
       </ion-row>

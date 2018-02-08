@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { tap, map }   from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Coder }      from '../../models/coder.model';
 
@@ -20,13 +19,9 @@ export class CoderServiceProvider {
   getCoders(): Observable<Coder[]> {
     return this.http.get<Coder[]>(this.API_URL)
     .pipe(
-      tap(result => console.table(result)),
+      // tap(result => console.table(result)),
     );
   }
 
-  private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error);
-    return Promise.reject(error.message || error);
-  }
 
 }

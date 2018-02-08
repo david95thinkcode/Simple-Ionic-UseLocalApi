@@ -18,7 +18,8 @@ import { Coder }                                                from '../../mode
 export class CodersInDbPage implements OnInit{
   
   coders : Coder[];
-
+  error: any;
+  
   constructor(public alertCtrl : AlertController, public navCtrl: NavController, public navParams: NavParams, private coderProvider : CoderInDbServiceProvider) {
   }
 
@@ -26,20 +27,49 @@ export class CodersInDbPage implements OnInit{
     this.getCoders();
   }
 
+  /** Used to retrieve coders */
   getCoders() {
     this.coderProvider.getCoders()
-    .subscribe(data => {
-      this.coders = data;
-    })
+    .subscribe(
+      data => {
+        this.coders = data;
+      },
+      error => {
+        this.error = error;
+        console.log(this.error);
+      })
   }
-
+  
+  /** Show the page used to add new coder*/
+  addCoder() {
+    this.navCtrl.push('NewCoderPage');
+  }
+  
+  /** Used to remove specified coder */
+  removeCoder(coder: Coder) {
+    this.coderProvider.DeleteCoder(coder)
+    .subscribe(
+      data => {
+        if (data._success) {
+         console.log(data._message)
+        }
+      },
+      error => {
+        this.error = error;
+        console.log(this.error);
+      })
+  }
+  
+  /**
+   * Show specified coder details
+   * @param coder 
+   */
   showDetails(coder: Coder) {
     this.PresentAlert(coder.name + ' Details ', 'id : ' + coder.id + '<br>Phone : ' + coder.phone_number + '<br>county : ' + coder.country + '<br>sex : ' + coder.sex);
   }
 
   PresentAlert(title : string, msg : string) {
-    const alert = this
-      .alertCtrl
+    const alert = this.alertCtrl
       .create({title: title, subTitle: msg, buttons: ['Dismiss']});
     alert.present();
   }

@@ -1,0 +1,48 @@
+<!--
+  Generated template for the NewCoderPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-navbar>
+      <ion-title>New coder</ion-title>
+    </ion-navbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div>
+    <ion-item>
+      <ion-label floating>Coder name</ion-label>
+      <ion-input type='text' [(ngModel)]='coder.name'></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Phone number</ion-label>
+      <ion-input type='tel' [(ngModel)]='coder.phone_number'></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Country</ion-label>
+      <ion-input type='tel' [(ngModel)]='coder.country'></ion-input>
+    </ion-item>
+
+    <ion-item>
+      
+      <ion-label floating>Sexe</ion-label>
+      <ion-select [(ngModel)]='coder.sex'>
+        <ion-option value="Male">Male</ion-option>
+        <ion-option value="Female">Female</ion-option>
+      </ion-select>
+    </ion-item>
+    <br>
+    
+    <div text-center>
+        <button ion-button color='dark' (tap)='save()' large>Save</button>
+    </div>
+  </div>
+
+</ion-content>
